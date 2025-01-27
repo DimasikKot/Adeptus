@@ -61,7 +61,8 @@ fun NavGraph(repository: Repository) {
                 composable(Screen.Main.route) {
                     HorizontalPager(
                         state = pagerState,
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.fillMaxSize(),
+                        beyondViewportPageCount = 5
                     ) { page ->
                         when (page) {
                             0 -> ArtifactsScreen(

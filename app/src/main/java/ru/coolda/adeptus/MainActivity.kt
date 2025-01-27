@@ -14,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.core.splashscreen.SplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.delay
@@ -32,9 +33,10 @@ class MainActivity : ComponentActivity() {
                 delay(5000)
                 load = true
             }
-            if (load) {
-                AdeptusTheme { NavGraph(Repository()) }
+            if (!load) {
+                SplashScreen
             }
+            AdeptusTheme { NavGraph(Repository()) }
         }
     }
 }
@@ -44,36 +46,17 @@ class MyApplication : Application()
 
 class Repository {
     private val _artifacts = listOf(
-        Artifact(1, name = "Крио сет", icon = R.drawable.cake01),
-        Artifact(2, name = "Anemo", "Сила в пуках", icon = R.drawable.cake02, "Modshtadt"),
-        Artifact(3, description = "????", region = "????sd"),
-        Artifact(4, name = "Крио сет", icon = R.drawable.cake03),
-        Artifact(5, name = "Anemo", "Сила в пуках", icon = R.drawable.cake04, "Modshtadt"),
-        Artifact(6, description = "????", region = "????sd"),
-        Artifact(7, name = "Крио сет", icon = R.drawable.cake05),
-        Artifact(8, name = "Anemo", "Сила в пуках", icon = R.drawable.cake06, "Modshtadt"),
-        Artifact(9, description = "????", region = "????sd"),
-        Artifact(10, name = "Крио сет", icon = R.drawable.cake07),
-        Artifact(11, name = "Anemo", "Сила в пуках", icon = R.drawable.cake08, "Modshtadt"),
-        Artifact(12, description = "????", region = "????sd"),
-        Artifact(13, name = "Крио сет", icon = R.drawable.cake09),
-        Artifact(14, name = "Anemo", "Сила в пуках", icon = R.drawable.cake10, "Modshtadt"),
-        Artifact(15, description = "????", region = "????sd"),
-        Artifact(16, name = "Крио сет", icon = R.drawable.cake01),
-        Artifact(17, name = "Anemo", "Сила в пуках", icon = R.drawable.cake02, "Modshtadt"),
-        Artifact(18, description = "????", region = "????sd"),
-        Artifact(19, name = "Крио сет", icon = R.drawable.cake03),
-        Artifact(20, name = "Anemo", "Сила в пуках", icon = R.drawable.cake04, "Modshtadt"),
-        Artifact(21, description = "????", region = "????sd"),
-        Artifact(22, name = "Крио сет", icon = R.drawable.cake05),
-        Artifact(23, name = "Anemo", "Сила в пуках", icon = R.drawable.cake06, "Modshtadt"),
-        Artifact(24, description = "????", region = "????sd"),
-        Artifact(25, name = "Крио сет", icon = R.drawable.cake07),
-        Artifact(26, name = "Anemo", "Сила в пуках", icon = R.drawable.cake08, "Modshtadt"),
-        Artifact(27, description = "????", region = "????sd"),
-        Artifact(28, name = "Крио сет", icon = R.drawable.cake09),
-        Artifact(29, name = "Anemo", "Сила в пуках", icon = R.drawable.cake10, "Modshtadt"),
-        Artifact(30, description = "????", region = "????sd")
+        Artifact(1, name = "Крио сет", icon = R.drawable.i_n400069),
+        Artifact(2, name = "Крио сет", icon = R.drawable.i_n400074),
+        Artifact(3, name = "Крио сет", icon = R.drawable.i_n400079),
+        Artifact(4, name = "Крио сет", icon = R.drawable.i_n400084),
+        Artifact(5, name = "Крио сет", icon = R.drawable.i_n400089),
+        Artifact(6, name = "Крио сет", icon = R.drawable.i_n400094),
+        Artifact(7, name = "Крио сет", icon = R.drawable.i_n400099),
+        Artifact(8, name = "Крио сет", icon = R.drawable.i_n400109),
+        Artifact(9, name = "Крио сет", icon = R.drawable.i_n400114),
+        Artifact(10, name = "Крио сет", icon = R.drawable.i_n400119),
+        Artifact(11, name = "Крио сет", icon = R.drawable.i_n400124),
     )
     private val _personages = listOf(
         Personage(
