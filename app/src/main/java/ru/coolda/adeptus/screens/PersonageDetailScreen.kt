@@ -3,19 +3,18 @@ package ru.coolda.adeptus.screens
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionScope
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.ErrorOutline
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import ru.coolda.adeptus.Screen
 import ru.coolda.adeptus.models.Personage
@@ -42,8 +41,8 @@ fun PersonageDetailScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text("ID: ${item.id}")
-                Icon(
-                    imageVector = item.icon ?: Icons.Outlined.ErrorOutline,
+                Image(
+                    painterResource(item.icon),
                     contentDescription = item.name,
                     modifier = Modifier
                         .height(300.dp)
