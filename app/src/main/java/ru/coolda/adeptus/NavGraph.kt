@@ -30,7 +30,7 @@ import ru.coolda.adeptus.screens.WeaponsScreen
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 fun NavGraph(repository: Repository) {
-    val pagerState = rememberPagerState(initialPage = 2) { 5 }
+    val pagerState = rememberPagerState(initialPage = 0) { 5 }
     val coroutineScope = rememberCoroutineScope()
     val navController = rememberNavController()
     val currentBackStack by navController.currentBackStackEntryAsState()
@@ -64,25 +64,23 @@ fun NavGraph(repository: Repository) {
                     ) { page ->
                         when (page) {
                             0 -> ArtifactSetsScreen(
-                                navController, repository.fetchArtifactSets(),
+                                repository.fetchArtifactSets(),
+                                navController,
                                 this@SharedTransitionLayout,
                                 this@composable
                             )
-
-                            4 -> WeaponsScreen()
-
-                            2 -> HomeScreen()
-                            3 -> NotificationsScreen {
-                                coroutineScope.launch {
-                                    pagerState.animateScrollToPage(page = 2)
-                                }
-                            }
 
                             1 -> PersonagesScreen(
                                 navController, repository.fetchPersonages(),
                                 this@SharedTransitionLayout,
                                 this@composable
                             )
+
+                            2 -> HomeScreen()
+
+                            3 -> NotificationsScreen()
+
+                            4 -> WeaponsScreen()
                         }
                     }
                     if (pagerState.currentPage != 2 && showBottomBar) {

@@ -29,7 +29,7 @@ fun ArtifactSetDetailScreen(
                         ) + "ArtifactSetCard"
                     ),
                     animatedContentScope
-                ),
-            )
+                )
+        )
     }
 }

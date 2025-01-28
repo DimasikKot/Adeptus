@@ -33,7 +33,10 @@ fun PersonagesScreen(
 ) {
     with(sharedTransitionScope) {
         LazyVerticalGrid(columns = GridCells.Fixed(2), modifier = Modifier.fillMaxSize()) {
-            items(items) { item ->
+            items(
+                items = items,
+                key = { it.id }
+            ) { item ->
                 ElevatedCard(
                     modifier = Modifier
                         .padding(8.dp)
@@ -48,7 +51,7 @@ fun PersonagesScreen(
                 ) {
                     Column {
                         Image(
-                             painterResource(item.icon),
+                            painterResource(item.icon),
                             contentDescription = item.name,
                             modifier = Modifier
                                 .height(300.dp)

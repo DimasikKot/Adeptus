@@ -18,7 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,19 +35,24 @@ import ru.coolda.adeptus.R
 @Composable
 fun ArtifactSetCard(
     modifier: Modifier = Modifier,
+    modifierRarity: Modifier = Modifier,
+    modifierIcon: Modifier = Modifier,
+    modifierDescription: Modifier = Modifier,
     rarity: Int? = null,
     icon: Int? = null,
-    description: String? = null
+    description: String? = null,
+    needLoad: Boolean = false,
 ) {
-    var load by remember { mutableStateOf(false) }
+    var load by rememberSaveable { mutableStateOf(!needLoad) }
     LaunchedEffect(!load) {
-        delay(100)
+        delay(300)
         load = true
     }
     Box(
         modifier = modifier
-            .width(180.dp)
+            .width(170.dp)
             .height(220.dp)
+            .padding(6.dp)
             .clip(MaterialTheme.shapes.small)
             .background(Color(236, 234, 237))
     ) {
@@ -74,11 +79,19 @@ fun ArtifactSetCard(
                         )
                     )
             ) {
+                if (rarity == 5) {
+                    AsyncImage(
+                        R.drawable.background_item_5_star,
+                        contentDescription = null,
+                        modifier = modifierIcon
+                            .fillMaxSize()
+                    )
+                }
                 if (load) {
                     AsyncImage(
                         model = icon ?: R.drawable.kate_001_gacha_card_w145,
                         contentDescription = null,
-                        modifier = Modifier
+                        modifier = modifierIcon
                             .fillMaxSize()
                     )
                 }
@@ -91,7 +104,7 @@ fun ArtifactSetCard(
                 if (load) {
                     Text(
                         text = description ?: "?",
-                        modifier = Modifier
+                        modifier = modifierDescription
                             .padding(start = 5.dp, bottom = 5.dp, end = 5.dp)
                             .align(Alignment.Center),
                         color = Color(78, 88, 114),
@@ -104,7 +117,7 @@ fun ArtifactSetCard(
         if (rarity != null && load) {
             Column {
                 Row(
-                    modifier = Modifier
+                    modifier = modifierRarity
                         .weight(4f)
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center,
