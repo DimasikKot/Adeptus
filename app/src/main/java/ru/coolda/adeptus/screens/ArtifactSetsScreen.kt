@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import ru.coolda.adeptus.Screen
 import ru.coolda.adeptus.elements.ArtifactSetCard
@@ -24,7 +25,7 @@ fun ArtifactSetsScreen(
     animatedContentScope: AnimatedContentScope
 ) {
     with(sharedTransitionScope) {
-        LazyVerticalGrid(columns = GridCells.Fixed(2), modifier = Modifier.fillMaxSize()) {
+        LazyVerticalGrid(columns = GridCells.Adaptive(minSize = 170.dp), modifier = Modifier.fillMaxSize()) {
             items(
                 items = items,
                 key = { it.id }

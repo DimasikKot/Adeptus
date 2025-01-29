@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -66,25 +67,34 @@ fun ArtifactSetCard(
                     .background(
                         Brush.linearGradient(
                             when (rarity) {
-                                1 -> listOf(Color(78, 88, 99), Color(125, 134, 146))
-                                2 -> listOf(Color(76, 89, 90), Color(90, 138, 108))
-                                3 -> listOf(Color(79, 83, 113), Color(75, 149, 167))
-                                4 -> listOf(Color(94, 86, 125), Color(175, 134, 194))
                                 5 -> listOf(Color(106, 85, 81), Color(215, 161, 88))
+                                4 -> listOf(Color(94, 86, 125), Color(175, 134, 194))
+                                3 -> listOf(Color(79, 83, 113), Color(75, 149, 167))
+                                2 -> listOf(Color(76, 89, 90), Color(90, 138, 108))
+                                1 -> listOf(Color(78, 88, 99), Color(125, 134, 146))
                                 else -> listOf(
-                                    Color(183, 28, 28, 255),
-                                    Color(229, 115, 115, 255)
+                                    Color(119, 84, 92),
+                                    Color(210, 122, 110)
                                 )
                             }
                         )
                     )
             ) {
-                if (rarity == 5) {
+                if (load) {
                     AsyncImage(
-                        R.drawable.background_item_5_star,
+                        when (rarity) {
+                            5 -> R.drawable.background_item_5_star
+                            4 -> R.drawable.background_item_4_star
+                            3 -> R.drawable.background_item_3_star
+                            2 -> R.drawable.background_item_2_star
+                            1 -> R.drawable.background_item_1_star
+                            else -> R.drawable.background_item_0_star
+                        },
                         contentDescription = null,
                         modifier = modifierIcon
-                            .fillMaxSize()
+                            .fillMaxSize(),
+                        contentScale = ContentScale.Crop,
+                        alpha = 0.6f
                     )
                 }
                 if (load) {

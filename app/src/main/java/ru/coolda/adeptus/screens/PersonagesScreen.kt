@@ -32,7 +32,7 @@ fun PersonagesScreen(
     animatedContentScope: AnimatedContentScope
 ) {
     with(sharedTransitionScope) {
-        LazyVerticalGrid(columns = GridCells.Fixed(2), modifier = Modifier.fillMaxSize()) {
+        LazyVerticalGrid(columns = GridCells.Adaptive(minSize = 170.dp), modifier = Modifier.fillMaxSize()) {
             items(
                 items = items,
                 key = { it.id }
